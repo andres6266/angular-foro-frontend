@@ -1,0 +1,53 @@
+<div class="row">
+
+    <div class="alert alert-secondary offset-md-4 col-md-4 offset-md-4 mt-3 text-center" *ngIf="user" role="alert">
+
+        No hay topics de
+        <span class="badge badge-primary">
+
+            {{user.name+' '+user.surname}}
+
+        </span>
+        
+
+    </div>
+
+    <div class="avatar-mask_list float-left mr-2 offset-md-4 col-md-4 offset-md-4 text-center">
+        <img src="../../../assets/preloader.gif">
+    </div>
+
+</div>
+
+<div class="com-lg-12 mt-3" *ngIf="topics && user">
+    <div class="avatar-mask_list float-left mr-2" *ngIf="user.image">
+        <img src="{{url+'avatar/'+user.image}}">
+    </div>
+    <div class="avatar-mask_list float-left mr-2" *ngIf="!user.image">
+        <img src="../../../assets/default_user.png">
+    </div>
+    <h1>{{user.name+' '+user.surname}}</h1>
+
+
+    <div class="clearfix">
+
+    </div>
+
+    <ul class="list-group list-topics mt-3" *ngFor="let topic of topics">
+        <li class="list-group-item">
+
+            <h4>
+                <a [routerLink]="['/tema',topic._id]">
+                    {{topic.title}}
+                </a>
+            </h4>
+
+            <span class="badge badge-light ml-2">
+                {{topic.date | amLocale:'es' | amTimeAgo}}
+            </span>
+            <a [routerLink]="['/tema',topic._id]" class="btn btn-sm btn-success float-right mx-auto d-block">Leer</a>
+        </li>
+    </ul>
+
+
+
+</div>

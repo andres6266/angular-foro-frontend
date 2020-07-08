@@ -1,0 +1,25 @@
+<div class="com-lg-12 mt-3" *ngIf="users">
+    <h1>{{page_title}}</h1>
+
+    <ul class="list-group list-topics" *ngFor="let user of users">
+        <li class="list-group-item">
+            <div class="avatar-mask_list float-left mr-3" *ngIf="user.image">
+                <img src="{{url+'avatar/'+user.image}}">
+            </div>
+            <div class="avatar-mask_list float-left mr-3" *ngIf="!user.image">
+                <img src="../../../assets/default_user.png">
+            </div>
+            <h4>
+                <a [routerLink]="['/perfil',user._id]">
+                    {{user.name+' '+user.surname}}
+                </a>
+            </h4>
+            <a [routerLink]="['/perfil',user._id]"
+                class="btn btn-sm btn-success float-left mx-auto d-block mr-3">Perfil</a>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+
+
+
+</div>
